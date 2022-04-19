@@ -1,0 +1,4 @@
+# 忽略所有txt结尾的文件
+*.txt
+#忽略第三方包文件（不上传至Github）
+node_modules/

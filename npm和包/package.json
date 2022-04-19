@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "moment": "^2.29.2"
+  },
+  "devDependencies": {
+    "jquery": "^3.6.0"
+  }
+}

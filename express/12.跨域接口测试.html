@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <button id="get">GET</button>
+    <button id="post">POST</button>
+    <button id="delete">DELETE</button>
+    <button id="jsonp">JSONP</button>
+    <script>
+        $(function () {
+            $('#get').on('click', function () {
+                $.ajax({
+                    type: 'GET',
+                    url: 'http://127.0.0.1/user/list',
+                    data: {
+                        name: 'zhangsan',
+                        age: 18,
+                        gender: '男'
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            });
+
+            $('#post').on('click', function () {
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://127.0.0.1/user/new',
+                    data: {
+                        name: 'zhangsan',
+                        age: 18,
+                        gender: '男'
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+
+            $('#delete').on('click', function () {
+                $.ajax({
+                    type: 'DELETE',
+                    url: 'http://127.0.0.1/user/del',
+                    data: {
+                        name: 'zhangsan',
+                        age: 18,
+                        gender: '男'
+                    },
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+
+            $('#jsonp').on('click', function () {
+                $.ajax({
+                    method: 'GET',
+                    url: 'http://127.0.0.1/api/jsonp',
+                    dataType: 'jsonp',
+                    success: function (res) {
+                        console.log(res);
+                    }
+                })
+            })
+        })
+    </script>
+</body>
+
+</html>
