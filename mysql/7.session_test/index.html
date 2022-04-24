@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../6.在express中使用session认证.js"></script>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h3>这是网站的首页</h3>
+    <button id="logout">退出登录</button>
+    <script>
+        $(function () {
+
+            $.ajax({
+                type: 'GET',
+                url: 'http://127.0.0.1/api/username',
+                // xhrFields: { withCredentials: true },
+                success: function (res) {
+                    console.log(res)
+                    if (res.status !== 0) {
+                        alert('请先登录后再访问此页面');
+                        location.href = './login.html';
+                        return;
+                    }
+                    alert('欢迎 ' + res.username + ' 会员登录');
+                    location.href = './index.html'
+                }
+            })
+
+            // $("#logout").on('click', function () {
+            //     $.ajax({
+            //         type: 'POST',
+            //         url: 'http://127.0.0.1/api/logout',
+            //         // xhrFields: { withCredentials: true },
+            //         success: function (res) {
+            //             if (res.status !== 0) {
+            //                 return alert('退出登录失败！')
+            //             }
+
+            //             alert(res.send(res.msg));
+            //         }
+            //     })
+            // })
+        })
+    </script>
+</body>
+
+</html>

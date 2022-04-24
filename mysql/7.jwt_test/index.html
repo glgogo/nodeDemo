@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../6.在express中使用session认证.js"></script>
+    <script src="./jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <h3>这是网站的首页</h3>
+    <button id="logout">退出登录</button>
+    <script>
+        $(function () {
+            $.ajax({
+                type: "GET",
+                url: "http://127.0.0.1/my/username",
+                beforeSend: function (XMLHttpRequest) {
+                    XMLHttpRequest.setRequestHeader("token", 'Bearer' + localStorage.token);
+                },
+                success: function (res) {
+                    console.log(res)
+                    if (res.status != 200) {
+                        location.href = './login.html'
+                    }
+                }
+            })
+
+        })
+    </script>
+</body>
+
+</html>
